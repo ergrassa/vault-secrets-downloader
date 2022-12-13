@@ -15,7 +15,7 @@ def loadConfig() -> dict:
     Returns:
         dict: config dict of dicts
     """
-    logging.info('Loading config')
+    logging.debug('Loading config')
     CONFIG_PATHS = [
         './',
         '/etc/hachivsd/'
@@ -30,7 +30,6 @@ def loadConfig() -> dict:
         'hachivsd.yml',
         'hachivsd.yaml'
     ]
-    LOADED_CONFIG = {}
     for path in CONFIG_PATHS:
         for file in CONFIG_FILES:
             try:
@@ -52,7 +51,7 @@ def getEngine(vault: dict) -> list:
     Returns:
         list: list of secret names
     """
-    logging.info('Requesting secrets list')
+    logging.debug('Requesting secrets list')
     headers = {
         'X-Vault-Token': vault['token']
     }
@@ -82,7 +81,7 @@ def getSecrets(vault: dict, secrets: list) -> dict:
         r = requests.request(method='GET', url=f"{url}/{s}", headers=headers)
         secret = r.json()['data']['data']
         data[s] = secret
-        logging.info(f"Got {i+1} of {len(secrets)} secrets")
+        logging.debug(f"Got {i+1} of {len(secrets)} secrets")
     return data
 
 
@@ -111,7 +110,7 @@ def formatAs(secret: dict, kind: str = 'env') -> str:
         case _:
             for k, v in secret.items():
                 output += f"{k}={v}\n"
-    logging.info(f"Formatted output as {kind}")
+    logging.debug(f"Formatted output as {kind}")
     return output
 
 
