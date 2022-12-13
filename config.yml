@@ -1,0 +1,11 @@
+---
+vault:
+  url: "http://your.vault.addr:port" # mandatory
+  token: hvs.token # mandatory
+  engine: engine-name # mandatory
+output: 
+  basepath: ./path # mandatory
+  path-override: out/ # optional
+  mode-override: none # optional
+  name-prefix: envos # optional
+  name-suffix: .env # optional
