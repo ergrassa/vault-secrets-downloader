@@ -33,4 +33,4 @@ output:
 ```
 All of **Vault** section parameters are mandatory,
 and the **output basepath** too.
-Other parameters are optional and will override the `__type__ __filename__ __path__` parameters in secret.
+Other parameters are optional and will override the `__type__`, `__filename__` and `__path__` parameters in secret.
